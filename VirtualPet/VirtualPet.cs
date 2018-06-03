@@ -88,7 +88,7 @@ namespace VirtualPet
             }
 
 
-            public VirtualPet(string name, int hunger, int boredom, int tired, int neglect) //Loaded Constructor
+            public VirtualPet(string name, int hunger,int hungerMax, int boredom, int boredomMax, int tired,int tiredMax, int neglect, int neglectMax, int mischief, int sickness) //Loaded Constructor
             {
             this.Name = name;
             this.Hunger = hunger;
@@ -121,6 +121,7 @@ namespace VirtualPet
         {
             this.Tired = 0;
             this.Hunger = this.Hunger + 5;
+            this.Neglect = this.Neglect - 2;
             Console.WriteLine("{0} has rested", this.Name);
 
         }
@@ -128,12 +129,14 @@ namespace VirtualPet
         {
             this.Boredom = 0;
             this.Tired = this.Tired + 6;
+            this.Neglect = this.Neglect - 2;
             Console.WriteLine("{0} had a fun time playing with you", this.Name);
         }
         public void Feed()
         {
             this.Hunger = 0;
             this.Tired = this.Tired + 3;
+            this.Neglect = this.Neglect - 2;
             Console.WriteLine("{0} is full now", this.Name);
         }
         public void DoctorVisit()
