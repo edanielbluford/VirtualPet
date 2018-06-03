@@ -151,6 +151,7 @@ namespace VirtualPet
             NeglectUpdate();
             HungerUpdate();
             BoredomUpdate();
+            SicknessUpdate();
             MischiefMaker();
             }
             
@@ -235,11 +236,35 @@ namespace VirtualPet
             }
 
         }
+        public void SicknessUpdate()
+        {
+            Random r = new Random();
+            this.Sickness = this.Sickness = r.Next(1, 7);
+            if(Sickness >= 30)
+            {
+                string sicknessResponse = "";
+                this.Neglect = this.Neglect = 4;
+                this.Tired = this.Tired + 10;
+                Console.WriteLine("{0} seems pretty sick. Would you like to take him to the doctor?", this.Name);
+                Console.WriteLine("Yes or No?");
+                if (sicknessResponse.Equals("yes"))
+                {
+                    this.Sickness = 0;
+                    Console.WriteLine("{0} is doing much better.", this.Name);
+                    this.Neglect = this.Neglect - 2; 
+                }
+                else
+                {
+                    Console.WriteLine("Okay...");
+                    this.Neglect = this.Neglect++;
+                }
+            }
+        }
 
         public void MischiefMaker()
         {
             Random r = new Random();
-            int value = r.Next(1, 8);
+            int value = r.Next(1, 6);
             this.Mischief = this.Boredom + this.Neglect;
 
             if (this.Mischief >= 20)
@@ -249,29 +274,39 @@ namespace VirtualPet
                 switch (value)
                 {
                     case 1:
-                        Console.WriteLine();
+                        Console.WriteLine("Oh no! it looks like {0} got into the pantry and ate all the cheese.", this.Name);
+                        this.Hunger = 0;
+                        this.Sickness = this.Sickness + 4;
+                        this.Boredom = this.Boredom - 3;
+                        this.Neglect = this.Neglect + 2;
                         break;
                     case 2:
-                        Console.WriteLine();
+                        Console.WriteLine("{0} got out of your room and scared your mother! She thought he was a ordinary mouse and swatted him with a broom.", this.Name);
+                        this.Hunger = this.Hunger + 2;
+                        this.Sickness = this.Sickness + 4;
+                        this.Boredom = this.Boredom - 3;
+                        this.Neglect = this.Neglect + 3;
                         break;
                     case 3:
-                        Console.WriteLine();
+                        Console.WriteLine("Whuh-oh. {0} was trying to help you pratice magic and he got zapped.",this.Name);
+                        this.Hunger = this.Hunger + 2;
+                        this.Sickness = this.Sickness + 6;
+                        
+                        this.Neglect = this.Neglect + 3;
                         break;
                     case 4:
-                        Console.WriteLine();
+                        Console.WriteLine("{0} managed to convince you to forgo your studies and play with him all day", this.Name);
+                        this.Tired = this.Tired + 4;
+                        this.Neglect = 0;
+                        this.Boredom = 0;
+                        this.Hunger = this.Hunger + 4;
                         break;
-                    case 5:
-                        Console.WriteLine();
+
+
+                    default:
+                        Console.WriteLine("{0} got out of your sight and it took you a while to find him.");
                         break;
-                    case 6:
-                        Console.WriteLine();
-                        break;
-                    case 7:
-                        Console.WriteLine();
-                        break;
-                    case 8:
-                        Console.WriteLine();
-                        break;
+                   
 
                 }
             }
