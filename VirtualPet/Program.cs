@@ -26,12 +26,13 @@ namespace VirtualPet
                     Console.WriteLine("Greetings!  We have been watching you and we think you would make a good addition to Clotho Magic Academy");
                     Console.WriteLine("Before we can fully accept you, we have one task for you.");
                     Console.WriteLine("Inside this box, you'll find your familar, a pet if you will. If you can manage to take good care of him, you're in!");
+                    Console.WriteLine("");
                     Console.WriteLine("The box shifts and shakes...");
                     for (int i = 0; i < 4; i++)
                     {
                         Console.WriteLine("*Shake*");
                     }
-
+                    Console.WriteLine("");
                     Console.WriteLine("A mouse pops out of the box!");
                     Console.WriteLine("Hello! My name is {0}! I'm sure we're going to have a great time together!", algernon.Name);
 
@@ -40,6 +41,9 @@ namespace VirtualPet
                         int choiceValue = 0;
                         algernon.CheckStatus();
                         algernon.Tick();
+                        Console.Write("");
+                        Console.Write("");
+                        Console.Write("");
                         Console.WriteLine("What would you like to do today Master!");
                         for (int i = 0; i < choices.Length; i++)
                         {
